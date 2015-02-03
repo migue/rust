@@ -24,6 +24,9 @@ pub fn expand_deriving_rand<F>(cx: &mut ExtCtxt,
                                push: F) where
     F: FnOnce(P<Item>),
 {
+    cx.span_warn(span,
+                 "`derive(Rand)` is deprecated in favour of `derive_rand` on crates.io");
+
     let trait_def = TraitDef {
         span: span,
         attributes: Vec::new(),
